@@ -1,4 +1,4 @@
-package com.github.frankkwok.corejava.v1ch05.enumtest;
+package com.github.frankkwok.corejava.v1ch05.enums;
 
 /**
  * @author Frank Kwok on 2017/3/29.

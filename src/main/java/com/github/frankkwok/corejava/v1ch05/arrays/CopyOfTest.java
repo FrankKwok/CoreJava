@@ -1,4 +1,4 @@
-package com.github.frankkwok.corejava.v1ch04.copyoftest;
+package com.github.frankkwok.corejava.v1ch05.arrays;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;

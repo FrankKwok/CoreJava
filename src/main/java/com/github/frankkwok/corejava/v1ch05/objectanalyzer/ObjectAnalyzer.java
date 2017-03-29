@@ -1,4 +1,4 @@
-package com.github.frankkwok.corejava.v1ch04.objectanalyzer;
+package com.github.frankkwok.corejava.v1ch05.objectanalyzer;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Array;

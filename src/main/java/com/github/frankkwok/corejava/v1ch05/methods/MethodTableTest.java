@@ -1,4 +1,4 @@
-package com.github.frankkwok.corejava.v1ch04.methods;
+package com.github.frankkwok.corejava.v1ch05.methods;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
