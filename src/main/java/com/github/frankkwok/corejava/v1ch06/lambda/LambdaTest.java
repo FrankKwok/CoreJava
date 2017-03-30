@@ -2,6 +2,7 @@ package com.github.frankkwok.corejava.v1ch06.lambda;
 
 import javax.swing.*;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -22,7 +23,8 @@ public class LambdaTest {
         Arrays.sort(planets);
         System.out.println("Sort by length: ");
         System.out.println(Arrays.toString(planets));
-        Arrays.sort(planets, (first, second) -> Integer.compare(first.length(), second.length()));
+        Arrays.sort(planets, Comparator.comparingInt(String::length));
+        System.out.println(Arrays.toString(planets));
 
 
         Timer timer = new Timer(3000, event -> System.out.println("The time is " + new Date()));
