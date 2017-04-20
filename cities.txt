@@ -1,0 +1,4 @@
+Chongqing,Chongqing,28846200
+Shanghai,Shanghai,23019100
+Beijing,Beijing,19612400
+Chengdu,Sicuan,14047600

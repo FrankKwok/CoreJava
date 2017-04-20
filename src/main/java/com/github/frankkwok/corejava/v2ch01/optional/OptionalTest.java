@@ -12,7 +12,7 @@ import java.util.*;
 public class OptionalTest {
     public static void main(String[] args) throws IOException {
         String contents = new String(Files.readAllBytes(
-                Paths.get("C:\\Users\\Frank\\Codes\\Source\\corejava\\gutenberg\\alice30.txt")), StandardCharsets.UTF_8);
+                Paths.get("alice30.txt")), StandardCharsets.UTF_8);
         List<String> wordList = Arrays.asList(contents.split("\\PL+"));
 
         Optional<String> optionalValue = wordList.stream()

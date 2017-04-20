@@ -16,7 +16,7 @@ import java.util.stream.Stream;
  */
 public class CreatingStreams {
     public static void main(String[] args) throws IOException {
-        Path path = Paths.get("C:\\Users\\Frank\\Codes\\Source\\corejava\\gutenberg\\alice30.txt");
+        Path path = Paths.get("alice30.txt");
         String contents = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
 
         Stream<String> words = Stream.of(contents.split("\\PL+")).filter(s -> s.length() > 0);
