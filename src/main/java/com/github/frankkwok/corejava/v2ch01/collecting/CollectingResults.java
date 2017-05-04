@@ -1,9 +1,9 @@
 package com.github.frankkwok.corejava.v2ch01.collecting;
 
+import com.github.frankkwok.corejava.util.ResourceUtils;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -71,8 +71,8 @@ public class CollectingResults {
     }
 
     private static Stream<String> noVowels() throws IOException {
-        String contents = new String(Files.readAllBytes(
-                Paths.get("alice30.txt")), StandardCharsets.UTF_8);
+        String contents = new String(ResourceUtils.readAllBytes("alice30.txt"),
+                StandardCharsets.UTF_8);
         List<String> wordList = Arrays.asList(contents.split("\\PL+"));
         Stream<String> words = wordList.stream();
         return words.map(s -> s.replaceAll("[aeiouAEIOU]", ""));

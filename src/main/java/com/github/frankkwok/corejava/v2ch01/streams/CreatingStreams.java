@@ -1,11 +1,10 @@
 package com.github.frankkwok.corejava.v2ch01.streams;
 
+import com.github.frankkwok.corejava.util.ResourceUtils;
+
 import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -16,8 +15,8 @@ import java.util.stream.Stream;
  */
 public class CreatingStreams {
     public static void main(String[] args) throws IOException {
-        Path path = Paths.get("alice30.txt");
-        String contents = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
+        String contents = new String(ResourceUtils.readAllBytes("alice30.txt"),
+                StandardCharsets.UTF_8);
 
         Stream<String> words = Stream.of(contents.split("\\PL+")).filter(s -> s.length() > 0);
         show("words", words);
@@ -38,7 +37,7 @@ public class CreatingStreams {
         Stream<String> wordsAnotherWay = Pattern.compile("\\PL+").splitAsStream(contents).filter(s -> s.length() > 0);
         show("wordsAnotherWay", wordsAnotherWay);
 
-        try (Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8)) {
+        try (Stream<String> lines = ResourceUtils.lines("alice30.txt")) {
             show("lines", lines);
         }
     }

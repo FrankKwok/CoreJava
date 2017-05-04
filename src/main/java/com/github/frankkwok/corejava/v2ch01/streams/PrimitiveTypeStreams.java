@@ -1,10 +1,9 @@
 package com.github.frankkwok.corejava.v2ch01.streams;
 
+import com.github.frankkwok.corejava.util.ResourceUtils;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -21,8 +20,8 @@ public class PrimitiveTypeStreams {
         IntStream is3 = IntStream.rangeClosed(5, 10);
         show("is3", is3);
 
-        Path path = Paths.get("alice30.txt");
-        String contents = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
+        String contents = new String(ResourceUtils.readAllBytes("alice30.txt"),
+                StandardCharsets.UTF_8);
 
         Stream<String> words = Stream.of(contents.split("\\PL+"));
         IntStream is4 = words.mapToInt(String::length);

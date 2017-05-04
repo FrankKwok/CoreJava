@@ -1,8 +1,8 @@
 package com.github.frankkwok.corejava.v2ch01.collecting;
 
+import com.github.frankkwok.corejava.util.ResourceUtils;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -63,7 +63,7 @@ public class DownstreamCollectors {
     }
 
     private static Stream<City> readCities(String fileName) throws IOException {
-        return Files.lines(Paths.get(fileName))
+        return ResourceUtils.lines(fileName)
                 .map(s -> s.split(","))
                 .map(strings -> new City(strings[0], strings[1], Integer.parseInt(strings[2])));
     }
