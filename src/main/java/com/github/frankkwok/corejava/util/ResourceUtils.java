@@ -14,6 +14,10 @@ public class ResourceUtils {
         classLoader = ResourceUtils.class.getClassLoader();
     }
 
+    public static InputStream newInputStream(String name) {
+        return classLoader.getResourceAsStream(name);
+    }
+
     public static byte[] readAllBytes(String name) throws IOException {
         try (InputStream in = classLoader.getResourceAsStream(name)) {
             byte[] buffer = new byte[in.available()];
