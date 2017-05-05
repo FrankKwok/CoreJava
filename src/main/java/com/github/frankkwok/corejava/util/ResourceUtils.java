@@ -2,6 +2,8 @@ package com.github.frankkwok.corejava.util;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -14,20 +16,34 @@ public class ResourceUtils {
         classLoader = ResourceUtils.class.getClassLoader();
     }
 
-    public static InputStream newInputStream(String name) {
-        return classLoader.getResourceAsStream(name);
+    public static InputStream newInputStream(String filename) {
+        return classLoader.getResourceAsStream(filename);
     }
 
-    public static byte[] readAllBytes(String name) throws IOException {
-        try (InputStream in = classLoader.getResourceAsStream(name)) {
+    public static byte[] readAllBytes(String filename) throws IOException {
+        try (InputStream in = classLoader.getResourceAsStream(filename)) {
             byte[] buffer = new byte[in.available()];
             in.read(buffer);
             return buffer;
         }
     }
 
-    public static Stream<String> lines(String name) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(classLoader.getResourceAsStream(name),
+    public static List<String> readAllLines(String filename) throws IOException {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(newInputStream(filename),
+                StandardCharsets.UTF_8))) {
+            List<String> result = new ArrayList<>();
+            for (; ; ) {
+                String line = br.readLine();
+                if (line == null)
+                    break;
+                result.add(line);
+            }
+            return result;
+        }
+    }
+
+    public static Stream<String> lines(String filename) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(classLoader.getResourceAsStream(filename),
                 StandardCharsets.UTF_8));
         return br.lines().onClose(asUncheckedRunnable(br));
     }

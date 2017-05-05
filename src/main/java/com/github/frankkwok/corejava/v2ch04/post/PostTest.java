@@ -1,11 +1,11 @@
 package com.github.frankkwok.corejava.v2ch04.post;
 
+import com.github.frankkwok.corejava.util.ResourceUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Scanner;
@@ -23,7 +23,7 @@ public class PostTest {
         }
 
         Properties properties = new Properties();
-        try (InputStream in = Files.newInputStream(Paths.get(propsFilename))) {
+        try (InputStream in = ResourceUtils.newInputStream(propsFilename)) {
             properties.load(in);
         }
 
